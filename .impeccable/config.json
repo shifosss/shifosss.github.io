@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-07T14:27:57.429Z",
+        "reason": "Claude verified 2026-11-07: detector reads the clamp(16px,4vw,64px) gutter as zero; figcaption p renders 14px/16px+ padding, and the finding clears only with fixed px"
+      },
+      {
+        "rule": "tight-leading",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-07T14:27:57.454Z",
+        "reason": "Claude verified 2026-11-07: .note line-height is unitless 1.34; detector miscomputes the clamp() font-size, finding clears with a fixed size at the same 1.34"
+      }
+    ]
+  }
+}
