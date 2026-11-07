@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chen (Alex) Zhang</title>
+<meta name="description" content="University of Toronto Data Science and Computer Science student: production LLM systems at PocketHealth that read faxed medical-imaging orders and route them to booking, and LLM structuring of EMR data for clinical risk prediction at SickKids.">
+<link rel="canonical" href="https://shifosss.github.io/">
+<meta property="og:title" content="Chen (Alex) Zhang">
+<meta property="og:description" content="University of Toronto Data Science and Computer Science student: production LLM systems at PocketHealth that read faxed medical-imaging orders and route them to booking, and LLM structuring of EMR data for clinical risk prediction at SickKids.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root {
+  --paper: #ffffff;
+  --ink: #15211f;
+  --ink-soft: #46544f;
+  --rule: #d5dedb;
+  --teal: #0b4f4c;
+  --teal-deep: #083d3b;
+  --on-teal: #eef6f4;
+  --on-teal-soft: #b5d0ca;
+  --mark: #f3c969;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --gutter: clamp(16px, 4vw, 64px);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.55 var(--serif); }
+::selection { background: var(--mark); color: var(--ink); }
+a { color: var(--teal); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+.head {
+  display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: 24px clamp(32px, 6vw, 96px); align-items: end;
+  max-width: 1320px; margin: 0 auto; padding: clamp(32px, 6vh, 64px) var(--gutter) clamp(28px, 4vh, 44px);
+}
+h1 { margin: 0 0 .4em; font-weight: 500; font-size: clamp(2.5rem, 5.6vw, 5rem); line-height: 1.04; letter-spacing: -.02em; text-wrap: balance; }
+.abstract { margin: 0; max-width: 62ch; font-size: clamp(1.05rem, 1.35vw, 1.25rem); color: var(--ink-soft); }
+.byline { font: 15px/1.5 var(--sans); color: var(--ink-soft); }
+.byline p { margin: 0 0 .7em; }
+.byline strong { color: var(--ink); font-weight: 600; }
+.byline ul, .links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 0; padding: 0; list-style: none; }
+.links { font: 15px/1.5 var(--sans); }
+
+.figure { margin: 0; background: var(--teal); color: var(--on-teal); }
+.figure-in {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 6vw, 96px); align-items: center;
+  max-width: 1320px; margin: 0 auto; padding: clamp(36px, 6vh, 64px) var(--gutter) 24px;
+}
+.note { margin: 0; font-size: clamp(1.45rem, 2.7vw, 2.4rem); line-height: 1.34; letter-spacing: -.005em; }
+.note span { border-bottom: 2px solid var(--mark); transition: background-color .18s ease-out, color .18s ease-out; }
+.fields { margin: 0; font: 15px/1.4 var(--mono); }
+.fields div {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 24px; padding: 14px 12px;
+  border-top: 1px solid rgba(238, 246, 244, .24); transition: background-color .18s ease-out, color .18s ease-out;
+}
+.fields div:last-child { border-bottom: 1px solid rgba(238, 246, 244, .24); }
+.fields dt { color: var(--on-teal-soft); }
+.fields dd { margin: 0 0 0 auto; text-align: right; font-weight: 600; white-space: nowrap; }
+.on { background: var(--mark) !important; color: var(--ink) !important; }
+.on dt { color: var(--ink); }
+.figure :focus-visible { outline-color: var(--mark); }
+figcaption { background: var(--teal-deep); color: var(--on-teal-soft); font: 14px/1.5 var(--sans); }
+figcaption p { max-width: 1320px; margin: 0 auto; padding: 14px var(--gutter); }
+figcaption b { color: var(--on-teal); font-weight: 600; }
+
+.section { max-width: 1320px; margin: 0 auto; padding: clamp(48px, 9vh, 96px) var(--gutter) 0; }
+.section:last-of-type { padding-bottom: clamp(48px, 9vh, 96px); }
+h2 { margin: 0 0 1em; font-weight: 500; font-size: clamp(1.6rem, 2.6vw, 2.2rem); letter-spacing: -.01em; }
+.entry { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 8px clamp(32px, 6vw, 96px); padding: 22px 0; border-top: 1px solid var(--rule); }
+h3 { margin: 0; font-weight: 600; font-size: 1.3rem; line-height: 1.3; }
+.meta { margin: .25em 0 0; font: 15px/1.5 var(--sans); color: var(--ink-soft); }
+.entry p { margin: 0 0 .7em; max-width: 68ch; }
+.entry .credit { font: 15px/1.55 var(--sans); color: var(--ink-soft); }
+code { font: .88em var(--mono); }
+.close p { margin: 0 0 .7em; }
+
+.foot { max-width: 1320px; margin: 0 auto; padding: 20px var(--gutter) 32px; border-top: 1px solid var(--rule); font: 14px/1.5 var(--sans); color: var(--ink-soft); }
+.foot p { margin: 0; }
+
+@media (max-width: 820px) {
+  .head, .figure-in, .entry { grid-template-columns: minmax(0, 1fr); }
+  .figure-in { padding-top: 32px; }
+}
+@media (max-width: 520px) {
+  .fields div { flex-direction: column; flex-wrap: nowrap; }
+  .fields dd { margin-left: 0; text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .note span, .fields div { transition: none; }
+}
+</style>
+</head>
+<body>
+<header class="head">
+  <div>
+    <h1>Chen (Alex) Zhang builds AI for healthcare</h1>
+    <p class="abstract">University of Toronto Data Science and Computer Science student: production LLM systems at PocketHealth that read faxed medical-imaging orders and route them to booking, and LLM structuring of EMR data for clinical risk prediction at SickKids.</p>
+  </div>
+  <div class="byline">
+    <p><strong>Looking for Toronto internships starting May 2027.</strong></p>
+    <ul>
+      <li><a href="mailto:calexzhang05@gmail.com">calexzhang05@gmail.com</a></li>
+      <li><a href="https://www.linkedin.com/in/chen-zhang-011b8b265">LinkedIn</a></li>
+      <li><a href="https://github.com/shifosss">GitHub</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<figure class="figure">
+  <div class="figure-in">
+    <p class="note"><span data-k="age">62-year-old</span> woman with <span data-k="dm">longstanding type 2 diabetes</span> here for <span data-k="cc">routine follow-up</span>. Hba1c 8.2. She <span data-k="smk">quit smoking 5 years ago</span> after roughly 30 years of a pack a day.</p>
+    <dl class="fields">
+      <div data-k="age" tabindex="0"><dt>age</dt><dd>62</dd></div>
+      <div data-k="cc" tabindex="0"><dt>primary_complaint</dt><dd>diabetes follow-up</dd></div>
+      <div data-k="dm" tabindex="0"><dt>has_diabetes</dt><dd>true</dd></div>
+      <div data-k="smk" tabindex="0"><dt>smoking_status</dt><dd>Former</dd></div>
+    </dl>
+  </div>
+  <figcaption><p><b>Figure 1.</b> Clinical text in, one typed field per column out. A hand-written synthetic note and its expected output from the public test set of <a href="https://github.com/shifosss/ehrextract" style="color:inherit">ehrextract</a>. Not a patient, and not a model run.</p></figcaption>
+</figure>
+
+<section class="section">
+  <h2>Selected work</h2>
+  <article class="entry">
+    <div>
+      <h3><a href="https://github.com/shifosss/ehrextract">ehrextract</a></h3>
+      <p class="meta">Python package, Apache-2.0</p>
+    </div>
+    <div>
+      <p>Structured feature extraction from clinical notes. Bring notes as CSV, JSONL, JSON, XLSX, plain text or a DataFrame, pick a built-in task or your own YAML, and pick a LoRA adapter, local weights or an API model. A results table comes back with one column per field.</p>
+      <p class="credit">Created by Chen Zhang (lead author) and Yibing Xia (co-author), supervised by Sanjay Mahant, MD (The Hospital for Sick Children) and Nathan Taback, PhD (University of Toronto). Research-grade software, not a medical device. <code>pip install ehrextract</code></p>
+    </div>
+  </article>
+  <article class="entry">
+    <div>
+      <h3><a href="https://github.com/1nslyn/ReassurED">ReassurED</a></h3>
+      <p class="meta">McHacks 12, January 2025</p>
+    </div>
+    <div>
+      <p>Developed an ED navigation app for 120+ users (80% satisfaction) that estimates time-to-care and recommends hospitals. Built a FastAPI wait-time backend with scheduled web scraping and a weighted wait-time algorithm, behind a React Native (Expo) app with Firestore and Auth0.</p>
+      <p class="credit">Built with Leo Yin during the 24-hour hackathon. Wait times come from Québec emergency rooms.</p>
+      <p class="credit"><a href="https://github.com/shifosss/ReassurED" aria-label="Fork of ReassurED">Fork</a></p>
+    </div>
+  </article>
+  <article class="entry">
+    <div>
+      <h3><a href="https://github.com/shifosss/personal-RAG-for-everything">contextd</a></h3>
+      <p class="meta">Local-first RAG server with MCP, April 2026</p>
+    </div>
+    <div>
+      <p>Built contextd, a local-first RAG server that ingests PDFs, Claude exports and git repos and exposes 7 MCP tools to any MCP client (Claude Code, Codex CLI, Cursor). Implemented hybrid retrieval: BGE-M3 dense search (LanceDB) plus SQLite FTS5 BM25, fused by reciprocal rank fusion with an optional Claude Haiku reranker.</p>
+      <p class="credit">Indexes and queries stay on your machine; with an Anthropic key set, reranking sends the top candidate chunks to Anthropic.</p>
+    </div>
+  </article>
+  <article class="entry">
+    <div>
+      <h3><a href="https://github.com/shifosss/autoTune">autoTune</a></h3>
+      <p class="meta">Autonomous LLM fine-tuning experiments, March 2026</p>
+    </div>
+    <div>
+      <p>Built autoTune, a framework that overlays an autotune/ directory onto ML repos so coding agents iterate on LLM finetuning through a CLI (suggest, reconcile, frontier). Designed DAG-structured experiment and checkpoint management with merge operations, NSGA-II Pareto ranking and DAG-UCB scoring instead of flat trials.</p>
+      <p class="credit">155 tests pass. Exercised on synthetic experiments; no published benchmark yet.</p>
+    </div>
+  </article>
+  <article class="entry">
+    <div>
+      <h3><a href="https://github.com/shifosss/Stellaris-Recommender">Stellaris AI Advisor</a></h3>
+      <p class="meta">Game-state advisor, March 2026</p>
+    </div>
+    <div>
+      <p>Wrote a custom Clausewitz tokenizer and recursive-descent parser for Stellaris save files, feeding typed frozen dataclasses and a networkx game knowledge graph (tech DAG). Added a LightGBM LambdaMART colonization ranker evaluated with NDCG, plus Spearman-rho metrics and baselines for the RL value model.</p>
+      <p class="credit">Runs today as a rule-based Python library: parse a save, get ranked actions and alerts. Offline-RL training code (d3rlpy CQL/IQL) is in place; no trained model ships.</p>
+    </div>
+  </article>
+  <article class="entry">
+    <div>
+      <h3><a href="https://github.com/shifosss/frontier-research-workstation">Frontier Trading Agent</a></h3>
+      <p class="meta">Research workstation, September–October 2026</p>
+    </div>
+    <div>
+      <p>Built an evidence-first trading research workstation (FastAPI + React 19/TypeScript) with content-addressed datasets and append-only runs, keeping every attempt, failure and cost assumption auditable. Compared Ridge, ExtraTrees, boosted trees, an MLP and ensembles against technical-rule controls across 720 simulated accounts on 28.6 million daily bars; none qualified for promotion.</p>
+      <p class="credit">Simulation and paper trading only, with no live-trading path. Research, not investment advice.</p>
+    </div>
+  </article>
+</section>
+
+<section class="section">
+  <h2>Experience</h2>
+  <article class="entry">
+    <div>
+      <h3>PocketHealth</h3>
+      <p class="meta">AI/ML Engineer (PEY Co-op), Toronto<br>May 2026 – Present</p>
+    </div>
+    <div>
+      <p>Developed LLM triage for faxed imaging documents.</p>
+      <p>Built LLM voice agents, SMS reminders and fax automation for imaging, cardiology and hospital customers.</p>
+      <p>Shipped a shadow-tested auto-reject in an AI booking-triage workflow for faxes flagged as non-orders with no bookable exam.</p>
+    </div>
+  </article>
+  <article class="entry">
+    <div>
+      <h3>SickKids Hospital</h3>
+      <p class="meta">Research Student, Toronto<br>Mar 2026 – Present</p>
+    </div>
+    <div>
+      <p>Replaced traditional NLP with a LoRA fine-tuned LLM pipeline structuring EMR data for feeding intolerance risk prediction, raising extraction accuracy on human-labelled rare pediatric fields.</p>
+      <p>Automated structured extraction from researcher CVs with a Python LLM pipeline, preparing the data for a searchable researcher database.</p>
+    </div>
+  </article>
+  <article class="entry">
+    <div>
+      <h3>Shenzhen Bay Laboratory, Institute for Systems &amp; Physical Biology</h3>
+      <p class="meta">Machine Learning Research Intern, China<br>Jun – Aug 2025</p>
+    </div>
+    <div>
+      <p>Improved generalization to unseen proteins (correlation 0.21→0.32) by fusing ESM-2 foundation-model embeddings into a protein–glycan binding model.</p>
+      <p>Built a high-throughput training pipeline with caching and modular data loaders, reducing iteration time by 99% (10 hours→2 minutes per epoch).</p>
+    </div>
+  </article>
+  <article class="entry">
+    <div>
+      <h3>China Telecom Co., Ltd.</h3>
+      <p class="meta">Big Data Analyst Intern, China<br>Jun – Aug 2024</p>
+    </div>
+    <div>
+      <p>Standardized 10M+ records through an automated ETL reporting workflow, reducing manual effort by 5 hours per day and enabling real-time business insights.</p>
+      <p>Built Hive/SQL analytics monitoring 15 topline KPI metrics, with AI-assisted root-cause analysis.</p>
+    </div>
+  </article>
+</section>
+
+<section class="section">
+  <h2>Education</h2>
+  <article class="entry">
+    <div>
+      <h3>University of Toronto</h3>
+      <p class="meta">Toronto, ON</p>
+    </div>
+    <div>
+      <p>B.Sc. in Data Science &amp; Computer Science + ASIP Co-op. Sept 2023 – Jun 2028 (expected)</p>
+    </div>
+  </article>
+</section>
+
+<section class="section close">
+  <h2>Contact</h2>
+  <p>The fastest way to reach me is email: <a href="mailto:calexzhang05@gmail.com">calexzhang05@gmail.com</a>.</p>
+  <ul class="links">
+    <li><a href="https://www.linkedin.com/in/chen-zhang-011b8b265">LinkedIn</a></li>
+    <li><a href="https://github.com/shifosss">GitHub</a></li>
+  </ul>
+</section>
+</main>
+
+<footer class="foot">
+  <p>Updated November 2026.</p>
+</footer>
+
+<script>
+for (const el of document.querySelectorAll('[data-k]')) {
+  const peers = document.querySelectorAll(`[data-k="${el.dataset.k}"]`);
+  const set = on => peers.forEach(peer => peer.classList.toggle('on', on));
+  for (const type of ['pointerenter', 'focus']) el.addEventListener(type, () => set(true));
+  for (const type of ['pointerleave', 'blur']) el.addEventListener(type, () => set(false));
+}
+</script>
+</body>
+</html>
